@@ -1,0 +1,59 @@
+<!-- views/templates/templates.ejs -->
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="roulette-js">
+    <meta name="author" content="ttlexa">    
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/script.js"></script>
+    <style>
+        body        { padding-top:80px; }
+    </style>
+</head>
+<body>
+
+	<% include ../parts/menu %>
+
+<% if(page == "index"){%>
+	<% include ../pages/index %>
+<%}%>
+
+<% if(page == "login"){%>
+	<% include ../pages/login %>
+<%}%>
+
+<% if(page == "profile"){%>
+	<% include ../pages/profile %>
+<%}%>
+
+<% if(page == "chat"){%>
+	<% include ../pages/chat %>
+<%}%>
+
+<% if(page == "roulette"){%>
+	<% include ../pages/roulette %>
+<%}%>
+
+<% if(page == "signup"){%>
+	<% include ../pages/signup %>
+<%}%>
+
+<% if(page == "404"){%>
+	<% include ../pages/404 %>
+<%}%>
+
+<% if(page == "500"){%>
+	<% include ../pages/500 %>
+<%}%>
+
+	<% include ../parts/footer %>
+
+</body>
+</html>

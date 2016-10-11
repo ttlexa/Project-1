@@ -1,0 +1,88 @@
+<!-- views/pages/roulette.ejs -->
+<title>Roulette Game JS</title>
+<script src='/js/Winwheel.js'></script>
+<style type="text/css">
+	#canvasContainer {
+	    margin-top: 50px;
+	}
+	#canvas {
+	    z-index: 1;
+	}
+	#prizePointer {
+		position: absolute;
+	    left: 191px;
+	    top: 10px;
+	    z-index: 999;
+	}
+</style>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+			<div id="canvasContainer">
+				<canvas id='canvas' width='400' height='400'>
+				    Canvas not supported, use another browser.
+				</canvas>
+				<img id="prizePointer" src="/images/basic_pointer.png" alt="V" />
+			</div>			
+		</div>
+		<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+			222
+		</div>
+		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+			333
+		</div>
+	</div>
+</div>
+
+
+
+<script>
+    var theWheel = new Winwheel({
+    'numSegments'		: 37, 
+    'textAlignment'		: 'outer',
+    'textOrientation'	: 'curved',
+    'textMargin'    	: 20,
+    'textFontSize'   	: 15,           
+    'innerRadius'     : 140,
+    'segments'       	:
+    [
+        {'fillStyle' : '#008000', 'text' : '0', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#ff0000', 'text' : '32', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#000000', 'text' : '15', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#ff0000', 'text' : '19', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#000000', 'text' : '4', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#ff0000', 'text' : '21', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#000000', 'text' : '2', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#ff0000', 'text' : '25', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#000000', 'text' : '17', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#ff0000', 'text' : '34', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#000000', 'text' : '6', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#ff0000', 'text' : '27', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#000000', 'text' : '13', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#ff0000', 'text' : '36', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#000000', 'text' : '11', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#ff0000', 'text' : '30', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#000000', 'text' : '8', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#ff0000', 'text' : '23', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#000000', 'text' : '10', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#ff0000', 'text' : '5', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#000000', 'text' : '24', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#ff0000', 'text' : '16', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#000000', 'text' : '33', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#ff0000', 'text' : '1', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#000000', 'text' : '20', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#ff0000', 'text' : '14', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#000000', 'text' : '31', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#ff0000', 'text' : '9', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#000000', 'text' : '22', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#ff0000', 'text' : '18', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#000000', 'text' : '29', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#ff0000', 'text' : '7', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#000000', 'text' : '28', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#ff0000', 'text' : '12', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#000000', 'text' : '35', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#ff0000', 'text' : '3', 'textFillStyle' : '#FFFFFF'},
+        {'fillStyle' : '#000000', 'text' : '26', 'textFillStyle' : '#FFFFFF'}
+    ]
+});
+</script>
