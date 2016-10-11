@@ -1,29 +1,37 @@
 <!-- views/pages/roulette.ejs -->
 <title>Roulette Game JS</title>
-<script src='/js/Winwheel.js'></script>
+<!-- Подключаем скрипт для визуалицазии и настройки колеса рулетки -->
+<script type="text/javascript" src='/js/Winwheel.js'></script>
+<!-- Подключаем скрипт для анимации колеса рулетки -->
+<script type="text/javascript" src='/js/TweenMax.min.js'></script>
 <style type="text/css">
-	#canvasContainer {
-	    margin-top: 50px;
-	}
-	#canvas {
+	/*стили для колеса рулетки*/
+    #canvas {
+        width: 100%;
+        height: 100%;
 	    z-index: 1;
 	}
+    /*стили для значка WIN*/
 	#prizePointer {
-		position: absolute;
-	    left: 191px;
-	    top: 10px;
-	    z-index: 999;
+        position: relative;
+        left: 45.5%;
+        width: 10%;
+        height: 10%;
+        z-index: 2;
 	}
 </style>
+
 <div class="container">
 	<div class="row">
 		<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-			<div id="canvasContainer">
-				<canvas id='canvas' width='400' height='400'>
-				    Canvas not supported, use another browser.
-				</canvas>
-				<img id="prizePointer" src="/images/basic_pointer.png" alt="V" />
-			</div>			
+            <!-- значок WIN -->
+            <img id="prizePointer" src="/images/basic_pointer.png" alt="V" />
+            <!-- колесо рулетки -->
+            <!-- если id не canvas - тогда необходимо указывать его в настройках,
+            при создании колеса -->
+    		<canvas id='canvas' width=400 height=400>
+    		    Canvas not supported, use another browser.
+    		</canvas>
 		</div>
 		<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
 			222
@@ -35,16 +43,16 @@
 </div>
 
 
-
+<!-- скрипт для создания и настройки колеса рулетки -->
 <script>
-    var theWheel = new Winwheel({
-    'numSegments'		: 37, 
-    'textAlignment'		: 'outer',
-    'textOrientation'	: 'curved',
-    'textMargin'    	: 20,
-    'textFontSize'   	: 15,           
-    'innerRadius'     : 140,
-    'segments'       	:
+    var spinWheel = new Winwheel({
+    'numSegments'       :   37,         // кол-во сегментов
+    'textAlignment'     :   'outer',    // где будет написан текст (ближе/дальше от центра)
+    'textOrientation'   :   'curved',   // направление текста (по кругу)
+    'textMargin'        :   20,         // отступ текста от края
+    'textFontSize'      :   15,         // размер текста
+    'innerRadius'       :   140,        // внутренний радиус
+    'segments'       	:                 // описание каждого сегмента : цвет сегмента, содержание, цвет текста
     [
         {'fillStyle' : '#008000', 'text' : '0', 'textFillStyle' : '#FFFFFF'},
         {'fillStyle' : '#ff0000', 'text' : '32', 'textFillStyle' : '#FFFFFF'},
@@ -83,6 +91,33 @@
         {'fillStyle' : '#000000', 'text' : '35', 'textFillStyle' : '#FFFFFF'},
         {'fillStyle' : '#ff0000', 'text' : '3', 'textFillStyle' : '#FFFFFF'},
         {'fillStyle' : '#000000', 'text' : '26', 'textFillStyle' : '#FFFFFF'}
-    ]
+    ],
+    'animation'     :                   // параметры для анимации
+    {
+        'type'      :   'spinToStop',   // тип анимации
+        'duration'  :   2,              // длительность анимации (сек)
+        'spins'     :   2,              // кол-во пройденных полных оборотов
+        'delay'     :   0.5             // задержка перед запуском
+    }
 });
+
+    function getWinSegmentFromServerAndStart(){
+        // сброс колеса рулекти в начальное положение
+        if (winwheelToDrawDuringAnimation != null) {
+            spinWheel.stopAnimation();
+            spinWheel.rotationAngle=0;
+            spinWheel.draw();
+        };
+        // получение случайного угла внутри заданного сегмента
+        var stopAt = spinWheel.getRandomForSegment(36);
+        // задаем угол для остановки колеса, перед его запуском
+        spinWheel.animation.stopAngle = stopAt;
+        // запуск колеса рулетки
+        spinWheel.startAnimation();
+    }
 </script>
+
+<!-- кнопка запуска анимации -->
+<a onClick="getWinSegmentFromServerAndStart();" class="btn btn-success">Let's GO</a>
+<!-- кнопка сброса анимации -->
+<a onClick="spinWheel.stopAnimation(); spinWheel.rotationAngle=0; spinWheel.draw();" class="btn btn-danger">Reset</a>

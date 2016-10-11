@@ -1,7 +1,7 @@
 {
   "name": "Roulette-JS",
   "description": "online game",
-  "version": "0.0.6",
+  "version": "0.0.9",
   "main": "server.js",
   "author": {
     "name": "ttlexa",

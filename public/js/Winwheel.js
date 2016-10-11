@@ -1680,6 +1680,7 @@ Winwheel.prototype.startAnimation = function()
         properties['yoyo']       = this.animation.yoyo;     // Set others.
         properties['repeat']     = this.animation.repeat;
         properties['ease']       = this.animation.easing;
+        properties['delay']      = this.animation.delay;
         properties['onComplete'] = winwheelStopAnimation;   // This is always set to function outside of this class.
         
         // Do the tween animation passing the properties from the animation object as an array of key => value pairs.
@@ -1740,6 +1741,11 @@ Winwheel.prototype.computeAnimation = function()
         {
             // When spinning the rotationAngle is the wheel property which is animated.
             this.animation.propertyName = 'rotationAngle';
+
+            if (this.animation.delay == null)
+            {
+                this.animation.delay = 0;
+            }
             
             if (this.animation.spins == null)
             {
@@ -1774,6 +1780,11 @@ Winwheel.prototype.computeAnimation = function()
         {
             // Spin to stop the rotation angle is affected.
             this.animation.propertyName = 'rotationAngle';
+
+            if (this.animation.delay == null)
+            {
+                this.animation.delay = 0;
+            }
             
             if (this.animation.spins == null)
             {
@@ -1832,6 +1843,11 @@ Winwheel.prototype.computeAnimation = function()
             
             // Again this is a spin so the rotationAngle the property which is animated.
             this.animation.propertyName = 'rotationAngle';
+
+            if (this.animation.delay == null)
+            {
+                this.animation.delay = 0;
+            }
             
             if (this.animation.spins == null)
             {
@@ -1933,6 +1949,7 @@ function Animation(options)
         'propertyName'      : null,                // The name of the winning wheel property to be affected by the animation.
         'propertyValue'     : null,                // The value the property is to be set to at the end of the animation.
         'duration'          : 10,                  // Duration of the animation.
+        'delay'             : null,
         'yoyo'              : false,               // If the animation is to reverse back again i.e. yo-yo.
         'repeat'            : 0,                   // The number of times the animation is to repeat, -1 will cause it to repeat forever.
         'easing'            : 'power3.easeOut',    // The easing to use for the animation, default is the best for spin to stop. Use Linear.easeNone for no easing.
