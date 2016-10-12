@@ -4,7 +4,8 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+		
+		<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
             <!-- значок WIN -->
             <img id="prizePointer" src="/images/basic_pointer.png" alt="V" />
             <!-- колесо рулетки -->
@@ -13,15 +14,95 @@
     		<canvas id='canvas' width=400 height=400>
     		    Canvas not supported, use another browser.
     		</canvas>
-		</div>
-		<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-			222
-		</div>
-		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+		</div> <!-- основной div под рулетку -->
+
+		<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 panel panel-default">
+			
+			<style type="text/css">
+			   /*body{
+			    background-color: #047f42;
+			   }*/
+			   /*.div-border{
+			   	border: 1px solid #000000;
+			   }*/
+			</style>
+
+			<div class="row">
+				<a id="0" href="#" class="btn btn-default center-block">0</a>
+			</div>
+
+			<!-- ОСНОВНОЙ БЛОК -->
+			<div class="row">
+				<!-- первый столбец -->
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+					<a id="1" href="#" class="btn btn-default center-block">1</a>
+					<a id="4" href="#" class="btn btn-default center-block">4</a>
+					<a id="7" href="#" class="btn btn-default center-block">7</a>
+					<a id="10" href="#" class="btn btn-default center-block">10</a>
+					<a id="13" href="#" class="btn btn-default center-block">13</a>
+					<a id="16" href="#" class="btn btn-default center-block">16</a>
+					<a id="19" href="#" class="btn btn-default center-block">19</a>
+					<a id="22" href="#" class="btn btn-default center-block">22</a>
+					<a id="25" href="#" class="btn btn-default center-block">25</a>
+					<a id="28" href="#" class="btn btn-default center-block">28</a>
+					<a id="31" href="#" class="btn btn-default center-block">31</a>
+					<a id="34" href="#" class="btn btn-default center-block">34</a>
+				</div><!-- первый столбец -->
+				<!-- второй столбец -->
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+					<a id="2" href="#" class="btn btn-default center-block">2</a>
+					<a id="5" href="#" class="btn btn-default center-block">5</a>
+					<a id="8" href="#" class="btn btn-default center-block">8</a>
+					<a id="11" href="#" class="btn btn-default center-block">11</a>
+					<a id="14" href="#" class="btn btn-default center-block">14</a>
+					<a id="17" href="#" class="btn btn-default center-block">17</a>
+					<a id="20" href="#" class="btn btn-default center-block">20</a>
+					<a id="23" href="#" class="btn btn-default center-block">23</a>
+					<a id="26" href="#" class="btn btn-default center-block">26</a>
+					<a id="29" href="#" class="btn btn-default center-block">29</a>
+					<a id="32" href="#" class="btn btn-default center-block">32</a>
+					<a id="35" href="#" class="btn btn-default center-block">35</a>
+				</div><!-- второй столбец -->
+				<!-- третий столбец -->
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+					<a id="3" href="#" class="btn btn-default center-block">3</a>
+					<a id="6" href="#" class="btn btn-default center-block">6</a>
+					<a id="9" href="#" class="btn btn-default center-block">9</a>
+					<a id="12" href="#" class="btn btn-default center-block">12</a>
+					<a id="15" href="#" class="btn btn-default center-block">15</a>
+					<a id="18" href="#" class="btn btn-default center-block">18</a>
+					<a id="21" href="#" class="btn btn-default center-block">21</a>
+					<a id="24" href="#" class="btn btn-default center-block">24</a>
+					<a id="27" href="#" class="btn btn-default center-block">27</a>
+					<a id="30" href="#" class="btn btn-default center-block">30</a>
+					<a id="33" href="#" class="btn btn-default center-block">33</a>
+					<a id="36" href="#" class="btn btn-default center-block">36</a>
+				</div><!-- третий столбец -->
+				<!-- четвертый (1) столбец -->
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<div id="i1-18"><a href="#" class="btn btn-default center-block">1 - 18</a></div>
+					<!-- <div id="EVEN"><a href="#" class="btn btn-default center-block">EVEN</a></div> -->
+					<a href="#" class="btn btn-default center-block">EVEN</a>
+					<div id="RED"><a href="#" class="btn btn-default center-block">RED</a></div>
+					<div id="BLACK"><a href="#" class="btn btn-default center-block">BLACK</a></div>
+					<div id="ODD"><a href="#" class="btn btn-default center-block">ODD</a></div>
+					<div id="19-36"><a href="#" class="btn btn-default center-block">19 - 36</a></div>
+				</div> <!-- четвертый (1) столбец -->
+				<!-- пятый (2) столбец -->
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<div id="1st12"><a href="#" class="btn btn-default center-block">1st 12</a></div>
+					<div id="2nd12"><a href="#" class="btn btn-default center-block">2nd 12</a></div>
+					<div id="3rd12"><a href="#" class="btn btn-default center-block">3rd 12</a></div>
+				</div><!-- пятый (2) столбец -->
+			</div> <!-- div row таблицы ставок -->
+		</div> <!-- основной div под таблицу ставок -->
+
+		<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
 			333
 		</div>
-	</div>
-</div>
+
+	</div> <!-- div row -->
+</div> <!-- div container -->
 
 <!-- кнопка запуска анимации -->
 <a onClick="getWinSegmentFromServerAndStart();" class="btn btn-success">Let's GO</a>
