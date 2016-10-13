@@ -4,8 +4,9 @@
 
 <div class="container">
 	<div class="row">
-		
-		<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+
+		<!-- КОЛЕСО -->
+		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
             <!-- значок WIN -->
             <img id="prizePointer" src="/images/basic_pointer.png" alt="V" />
             <!-- колесо рулетки -->
@@ -16,98 +17,170 @@
     		</canvas>
 		</div> <!-- основной div под рулетку -->
 
+		<!-- УПРАВЛЕНИЕ, СТАВКИ -->
 		<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 panel panel-default">
-			
-			<style type="text/css">
-			   /*body{
-			    background-color: #047f42;
-			   }*/
-			   /*.div-border{
-			   	border: 1px solid #000000;
-			   }*/
-			</style>
+			<div class="panel-body">
+				
+				<div>
+					<a id="0" href="#" class="btn btn-success btn-sm center-block">0</a>
+				</div>
 
-			<div class="row">
-				<a id="0" href="#" class="btn btn-default center-block">0</a>
-			</div>
+				<!-- ОСНОВНОЙ БЛОК -->
+				<!-- ПОСЛЕ СОВЕРШЕНИЯ СТАВКИ - ДОБАВИТЬ КЛАСС active
+				И УДАЛИТЬ КЛАСС disabled С КНОПКИ ЗАПУСКА -->
+				<div class="row">
+					<!-- первый столбец -->
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+						<a id="i_1" href="#" class="btn btn-danger btn-sm center-block">1</a>
+						<a id="i_4" href="#" class="btn btn-default btn-sm center-block">4</a>
+						<a id="i_7" href="#" class="btn btn-danger btn-sm center-block">7</a>
+						<a id="i_10" href="#" class="btn btn-default btn-sm center-block">10</a>
+						<a id="i_13" href="#" class="btn btn-default btn-sm center-block">13</a>
+						<a id="i_16" href="#" class="btn btn-danger btn-sm center-block">16</a>
+						<a id="i_19" href="#" class="btn btn-danger btn-sm center-block">19</a>
+						<a id="i_22" href="#" class="btn btn-default btn-sm center-block">22</a>
+						<a id="i_25" href="#" class="btn btn-danger btn-sm center-block">25</a>
+						<a id="i_28" href="#" class="btn btn-default btn-sm center-block">28</a>
+						<a id="i_31" href="#" class="btn btn-default btn-sm center-block">31</a>
+						<a id="i_34" href="#" class="btn btn-danger btn-sm center-block">34</a>
+					</div><!-- первый столбец -->
+					<!-- второй столбец -->
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+						<a id="i_2" href="#" class="btn btn-default btn-sm center-block">2</a>
+						<a id="i_5" href="#" class="btn btn-danger btn-sm center-block">5</a>
+						<a id="i_8" href="#" class="btn btn-default btn-sm center-block">8</a>
+						<a id="i_11" href="#" class="btn btn-default btn-sm center-block">11</a>
+						<a id="i_14" href="#" class="btn btn-danger btn-sm center-block">14</a>
+						<a id="i_17" href="#" class="btn btn-default btn-sm center-block">17</a>
+						<a id="i_20" href="#" class="btn btn-default btn-sm center-block">20</a>
+						<a id="i_23" href="#" class="btn btn-danger btn-sm center-block">23</a>
+						<a id="i_26" href="#" class="btn btn-default btn-sm center-block">26</a>
+						<a id="i_29" href="#" class="btn btn-default btn-sm center-block">29</a>
+						<a id="i_32" href="#" class="btn btn-danger btn-sm center-block">32</a>
+						<a id="i_35" href="#" class="btn btn-default btn-sm center-block">35</a>
+					</div><!-- второй столбец -->
+					<!-- третий столбец -->
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+						<a id="i_3" href="#" class="btn btn-danger btn-sm center-block">3</a>
+						<a id="i_6" href="#" class="btn btn-default btn-sm center-block">6</a>
+						<a id="i_9" href="#" class="btn btn-danger btn-sm center-block">9</a>
+						<a id="i_12" href="#" class="btn btn-danger btn-sm center-block">12</a>
+						<a id="i_15" href="#" class="btn btn-default btn-sm center-block">15</a>
+						<a id="i_18" href="#" class="btn btn-danger btn-sm center-block">18</a>
+						<a id="i_21" href="#" class="btn btn-danger btn-sm center-block">21</a>
+						<a id="i_24" href="#" class="btn btn-default btn-sm center-block">24</a>
+						<a id="i_27" href="#" class="btn btn-danger btn-sm center-block">27</a>
+						<a id="i_30" href="#" class="btn btn-danger btn-sm center-block">30</a>
+						<a id="i_33" href="#" class="btn btn-default btn-sm center-block">33</a>
+						<a id="i_36" href="#" class="btn btn-danger btn-sm center-block">36</a>
+					</div><!-- третий столбец -->
+					<!-- !!! It's too early for that - пока без этих ставок - 4-й и 5-й столбец -->
+					<!-- четвертый (1) столбец -->
+					<!-- <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+						<a id="i_1-18" href="#" class="btn btn-default btn-sm center-block">1 - 18</a>
+						<a id="EVEN" href="#" class="btn btn-default btn-sm center-block">EVEN</a>
+						<a id="RED" href="#" class="btn btn-default btn-sm center-block">RED</a>
+						<a id="BLACK" href="#" class="btn btn-default btn-sm center-block">BLACK</a>
+						<a id="ODD" href="#" class="btn btn-default btn-sm center-block">ODD</a>
+						<a id="i_19-36" href="#" class="btn btn-default btn-sm center-block">19 - 36</a>
+					</div> --> <!-- четвертый (1) столбец -->
+					<!-- пятый (2) столбец -->
+					<!-- <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+						<a id="i_1st12" href="#" class="btn btn-default btn-sm center-block">1st 12</a>
+						<a id="i_2nd12" href="#" class="btn btn-default btn-sm center-block">2nd 12</a>
+						<a id="i_3rd12" href="#" class="btn btn-default btn-sm center-block">3rd 12</a>
+					</div> --> <!-- пятый (2) столбец -->
+				</div> <!-- div row для столбцов -->
+			</div> <!-- div panel-body -->
+			<div class="panel-footer">
+				<div class="row">
 
-			<!-- ОСНОВНОЙ БЛОК -->
-			<div class="row">
-				<!-- первый столбец -->
-				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-					<a id="1" href="#" class="btn btn-default center-block">1</a>
-					<a id="4" href="#" class="btn btn-default center-block">4</a>
-					<a id="7" href="#" class="btn btn-default center-block">7</a>
-					<a id="10" href="#" class="btn btn-default center-block">10</a>
-					<a id="13" href="#" class="btn btn-default center-block">13</a>
-					<a id="16" href="#" class="btn btn-default center-block">16</a>
-					<a id="19" href="#" class="btn btn-default center-block">19</a>
-					<a id="22" href="#" class="btn btn-default center-block">22</a>
-					<a id="25" href="#" class="btn btn-default center-block">25</a>
-					<a id="28" href="#" class="btn btn-default center-block">28</a>
-					<a id="31" href="#" class="btn btn-default center-block">31</a>
-					<a id="34" href="#" class="btn btn-default center-block">34</a>
-				</div><!-- первый столбец -->
-				<!-- второй столбец -->
-				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-					<a id="2" href="#" class="btn btn-default center-block">2</a>
-					<a id="5" href="#" class="btn btn-default center-block">5</a>
-					<a id="8" href="#" class="btn btn-default center-block">8</a>
-					<a id="11" href="#" class="btn btn-default center-block">11</a>
-					<a id="14" href="#" class="btn btn-default center-block">14</a>
-					<a id="17" href="#" class="btn btn-default center-block">17</a>
-					<a id="20" href="#" class="btn btn-default center-block">20</a>
-					<a id="23" href="#" class="btn btn-default center-block">23</a>
-					<a id="26" href="#" class="btn btn-default center-block">26</a>
-					<a id="29" href="#" class="btn btn-default center-block">29</a>
-					<a id="32" href="#" class="btn btn-default center-block">32</a>
-					<a id="35" href="#" class="btn btn-default center-block">35</a>
-				</div><!-- второй столбец -->
-				<!-- третий столбец -->
-				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-					<a id="3" href="#" class="btn btn-default center-block">3</a>
-					<a id="6" href="#" class="btn btn-default center-block">6</a>
-					<a id="9" href="#" class="btn btn-default center-block">9</a>
-					<a id="12" href="#" class="btn btn-default center-block">12</a>
-					<a id="15" href="#" class="btn btn-default center-block">15</a>
-					<a id="18" href="#" class="btn btn-default center-block">18</a>
-					<a id="21" href="#" class="btn btn-default center-block">21</a>
-					<a id="24" href="#" class="btn btn-default center-block">24</a>
-					<a id="27" href="#" class="btn btn-default center-block">27</a>
-					<a id="30" href="#" class="btn btn-default center-block">30</a>
-					<a id="33" href="#" class="btn btn-default center-block">33</a>
-					<a id="36" href="#" class="btn btn-default center-block">36</a>
-				</div><!-- третий столбец -->
-				<!-- четвертый (1) столбец -->
-				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<div id="i1-18"><a href="#" class="btn btn-default center-block">1 - 18</a></div>
-					<!-- <div id="EVEN"><a href="#" class="btn btn-default center-block">EVEN</a></div> -->
-					<a href="#" class="btn btn-default center-block">EVEN</a>
-					<div id="RED"><a href="#" class="btn btn-default center-block">RED</a></div>
-					<div id="BLACK"><a href="#" class="btn btn-default center-block">BLACK</a></div>
-					<div id="ODD"><a href="#" class="btn btn-default center-block">ODD</a></div>
-					<div id="19-36"><a href="#" class="btn btn-default center-block">19 - 36</a></div>
-				</div> <!-- четвертый (1) столбец -->
-				<!-- пятый (2) столбец -->
-				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<div id="1st12"><a href="#" class="btn btn-default center-block">1st 12</a></div>
-					<div id="2nd12"><a href="#" class="btn btn-default center-block">2nd 12</a></div>
-					<div id="3rd12"><a href="#" class="btn btn-default center-block">3rd 12</a></div>
-				</div><!-- пятый (2) столбец -->
-			</div> <!-- div row таблицы ставок -->
+					<!-- ВЫБОР ВЕЛИЧИНЫ СТАВКИ -->
+					<!-- ДЛЯ ОПРЕДЕЛЕНИЯ ВЫБРАННОЙ СТАВКИ -->
+					<!-- alert(document.querySelector('input[type="radio"]:checked').value) -->
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+						<label class="radio-inline">
+							<input type="radio" name="inlineRadioOptions" id="bet1" value="1"> 1 </label>
+						<label class="radio-inline">
+							<input type="radio" name="inlineRadioOptions" id="bet5" value="5" checked=""> 5 </label>
+						<label class="radio-inline">
+							<input type="radio" name="inlineRadioOptions" id="bet10" value="10"> 10 </label>
+						<label class="radio-inline">
+							<input type="radio" name="inlineRadioOptions" id="bet25" value="25"> 25 </label>
+						<label class="radio-inline">
+							<input type="radio" name="inlineRadioOptions" id="bet50" value="50"> 50 </label>
+						<label class="radio-inline">
+							<input type="radio" id="bet100" value="100"> 100 </label>
+					</div>
+					
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+						<!-- кнопка запуска анимации -->
+						<!-- !!! ДО СТАВОК НУЖЕН ЕЩЕ КЛАСС disabled. ПОСЛЕ ЛЮБОЙ СТАВКИ УДАЛЯТЬ ЕГО -->
+						<a onClick="getWinSegmentFromServerAndStart();" class="btn btn-info center-block">Let's GO</a>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+						<!-- кнопка сброса анимации -->
+						<a onClick="spinWheel.stopAnimation(); spinWheel.rotationAngle=0; spinWheel.draw();" class="btn btn-warning center-block">Reset</a>
+					</div>
+				</div> <!-- div row кнопок управления -->
+			</div> <!-- div panel-footer -->
 		</div> <!-- основной div под таблицу ставок -->
 
-		<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-			333
-		</div>
+		<!-- ИСТОРИЯ ВЫЙГРАШНЫХ ПОЛЕЙ -->
+		<!-- ПОСЛЕ КАЖДОЙ ИГРЫ ДОБАВЛЯТЬ <span class="badge">поле WIN</span> / -->
+		<div class="col-xs-8 col-sm-8 col-md-2 col-lg-2">
+			<div class="panel panel-default">
+			  <div class="panel-heading">Game History</div>
+			  <div class="panel-body">
+			    <span class="badge">3</span> /
+			    <span class="badge">28</span> /
+			    <span class="badge">16</span> /
+			    <span class="badge">5</span> /
+			    <span class="badge">34</span> /
+			  </div>
+			</div>
+		</div> <!-- история -->
+		
+		<!-- ПОЛЬЗОВАТЕЛИ НА САЙТЕ -->
+		<div class="col-xs-4 col-sm-4 col-md-1 col-lg-1">
+			<!-- <ul class="list-group">
+			  <li class="list-group-item">Test-1</li>
+			  <li class="list-group-item">Vasya</li>
+			  <li class="list-group-item">Petya</li>
+			  <li class="list-group-item">Оччччееенньььдлинныйник</li>
+			  <li class="list-group-item">Test-2</li>
+			</ul> -->
+			<div class="panel panel-default">
+			  <div class="panel-heading">Users On-Line</div>
+			  <div class="panel-body">
+			  	<a id="Vasya" href="#" class="listOfUsers" data-toggle="tooltip" data-placement="top" title="Тут будем показывать немного информации о Васе">Vasya</a>
+			  	<a id="Petya55555555555555555555555555" href="#" class="listOfUsers" data-toggle="tooltip" data-placement="top" title="Тут будем показывать немного информации о Пете">Petya111111111</a>
+			  </div>
+			</div>
+		</div> <!-- пользователи -->
 
-	</div> <!-- div row -->
-</div> <!-- div container -->
-
-<!-- кнопка запуска анимации -->
-<a onClick="getWinSegmentFromServerAndStart();" class="btn btn-success">Let's GO</a>
-<!-- кнопка сброса анимации -->
-<a onClick="spinWheel.stopAnimation(); spinWheel.rotationAngle=0; spinWheel.draw();" class="btn btn-danger">Reset</a>
+	</div> <!-- div row page-->
+</div> <!-- div container page -->
+		
+		<!-- ПЕРЕНЕСТИ В НЕОБХОДИМЫЕ ФАЙЛЫ -->
+		<style type="text/css">
+		   /*body{
+		    background-color: #047f42;
+		   }*/
+		   .btn{
+		   	border-radius: 15px;
+		   }
+		   .listOfUsers{
+		   	word-wrap: break-word;
+		   	font-size: 12px;
+		   }
+		</style>
+		<!-- ПЕРЕНЕСТИ В НЕОБХОДИМЫЕ ФАЙЛЫ -->
+		<script type="text/javascript">
+			$(function(){
+				$('[data-toggle="tooltip"]').tooltip();
+			});
+		</script>
 
 <!-- Подключаем скрипт для визуалицазии и настройки колеса рулетки -->
 <script type="text/javascript" src='/js/Winwheel.js'></script>
