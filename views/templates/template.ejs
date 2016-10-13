@@ -19,39 +19,45 @@
 </head>
 <body>
 
-	<% include ../parts/menu %>
+<% if(user == undefined){ %>
+    <% include ../parts/menu_no_auth %>
+<% } %>
 
-<% if(page == "index"){%>
-	<% include ../pages/index %>
-<%}%>
+<% if(user != undefined){ %>
+    <% include ../parts/menu_auth %>
+<% } %>
 
-<% if(page == "login"){%>
-	<% include ../pages/login %>
-<%}%>
+    <% if(page == "index"){ %>
+    	<% include ../pages/index %>
+    <% } %>
 
-<% if(page == "profile"){%>
-	<% include ../pages/profile %>
-<%}%>
+    <% if(page == "login"){ %>
+    	<% include ../pages/login %>
+    <% } %>
 
-<% if(page == "chat"){%>
-	<% include ../pages/chat %>
-<%}%>
+    <% if(page == "profile"){ %>
+    	<% include ../pages/profile %>
+    <% } %>
 
-<% if(page == "roulette"){%>
-	<% include ../pages/roulette %>
-<%}%>
+    <% if(page == "chat"){ %>
+    	<% include ../pages/chat %>
+    <% } %>
 
-<% if(page == "signup"){%>
-	<% include ../pages/signup %>
-<%}%>
+    <% if(page == "roulette"){ %>
+    	<% include ../pages/roulette %>
+    <% } %>
 
-<% if(page == "404"){%>
-	<% include ../pages/404 %>
-<%}%>
+    <% if(page == "signup"){ %>
+    	<% include ../pages/signup %>
+    <% } %>
 
-<% if(page == "500"){%>
-	<% include ../pages/500 %>
-<%}%>
+    <% if(page == "404"){ %>
+    	<% include ../pages/404 %>
+    <% } %>
+
+    <% if(page == "500"){ %>
+    	<% include ../pages/500 %>
+    <% } %>
 
 	<% include ../parts/footer %>
 

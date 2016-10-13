@@ -7,13 +7,18 @@ module.exports = function(app, passport, express) {
     // HOME  ===============================
     // =====================================
     app.get('/', function(req, res) {
-        res.render(app.get('templates_dir'), {page: 'index'});
+        res.render(app.get('templates_dir'), {
+            page : 'index',
+            user : req.user });
     });
 
     // LOGIN ===============================
     // =====================================
     app.get('/login', function(req, res) {
-        res.render(app.get('templates_dir'), {page: 'login', message: req.flash('loginMessage') });
+        res.render(app.get('templates_dir'), {
+            page : 'login',
+            message: req.flash('loginMessage'),
+            user : req.user });
     });
 
     // отправка запроса для логина
@@ -26,7 +31,10 @@ module.exports = function(app, passport, express) {
     // SIGNUP ==============================
     // =====================================
     app.get('/signup', function(req, res) {
-        res.render(app.get('templates_dir'), {page: 'signup', message: req.flash('signupMessage') });
+        res.render(app.get('templates_dir'), {
+            page : 'signup',
+            message: req.flash('signupMessage'),
+            user : req.user });
     });
 
     // отправка запроса для регистрации
@@ -36,7 +44,7 @@ module.exports = function(app, passport, express) {
         failureFlash : true // включение сообщений (flash)
     }));
 
-    // PROFILE SECTION =====================
+    // PROFILE =============================
     // =====================================
     // только для залогированных пользователей
     app.get('/profile', isLoggedIn, function(req, res) {
@@ -47,11 +55,15 @@ module.exports = function(app, passport, express) {
     });
 
     app.get('/chat', isLoggedIn, function(req, res){
-        res.render(app.get('templates_dir'), {page: 'chat'});
+        res.render(app.get('templates_dir'), {
+            page : 'chat',
+            user : req.user });
     });
 
     app.get('/roulette', function(req, res){
-        res.render(app.get('templates_dir'), {page: 'roulette'});
+        res.render(app.get('templates_dir'), {
+            page : 'roulette',
+            user : req.user });
     });
 
     // LOGOUT ==============================
@@ -63,13 +75,13 @@ module.exports = function(app, passport, express) {
 
     app.use(function(req, res){
         res.status(404);
-        res.render(app.get('templates_dir'), {page: '404'});
+        res.render(app.get('templates_dir'), {page : '404'});
     });
 
     app.use(function(err, req, res, next){
         console.error(err.stack);
         res.status(500);
-        res.render(app.get('templates_dir'), {page: '500'});
+        res.render(app.get('templates_dir'), {page : '500'});
     });
 };
 
@@ -79,5 +91,5 @@ function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())
         return next();
     // если нет - перенаправляется на главную страницу
-    res.redirect('/');
+    res.redirect('/login');
 }

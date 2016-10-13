@@ -1,0 +1,28 @@
+<!-- views/parts/menu.ejs -->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Roulette JS</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+    		<li><a href="/roulette">Roulette</a></li>
+    		<li><a href="/chat">Chat</a></li>
+        <li><a href="/profile">Profile</a></li>
+      </ul>
+<!--       <a href="/logout" class="btn btn-default btn-sm navbar-btn navbar-right">Logout</a>
+      <p class="navbar-text navbar-right">Signed in as <a href="/profile" class="navbar-link"><%= user.local.email %></a></p> -->
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+      <p class="navbar-text navbar-right">Signed in as <a href="/profile" class="navbar-link"><%= user.local.email %></a>&nbsp;&nbsp;&nbsp;</p>
+    </div>
+  </div>
+</nav>
