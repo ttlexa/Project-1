@@ -14,7 +14,7 @@ module.exports = function(app, passport, express) {
 
     // LOGIN ===============================
     // =====================================
-    app.get('/login', function(req, res) {
+    app.get('/login', isLoggedInAccess, function(req, res) {
         res.render(app.get('templates_dir'), {
             page : 'login',
             message: req.flash('loginMessage'),
@@ -30,7 +30,7 @@ module.exports = function(app, passport, express) {
 
     // SIGNUP ==============================
     // =====================================
-    app.get('/signup', function(req, res) {
+    app.get('/signup', isLoggedInAccess, function(req, res) {
         res.render(app.get('templates_dir'), {
             page : 'signup',
             message: req.flash('signupMessage'),
@@ -96,4 +96,10 @@ function isLoggedIn(req, res, next) {
         return next();
     // если нет - перенаправляется на главную страницу
     res.redirect('/login');
-}
+};
+
+function isLoggedInAccess (req, res, next) {
+    if (req.isAuthenticated()) {
+        res.redirect('/profile');
+    } return next();
+};
