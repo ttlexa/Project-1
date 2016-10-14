@@ -75,13 +75,17 @@ module.exports = function(app, passport, express) {
 
     app.use(function(req, res){
         res.status(404);
-        res.render(app.get('templates_dir'), {page : '404'});
+        res.render(app.get('templates_dir'), {
+            page : '404',
+            user : req.user });
     });
 
     app.use(function(err, req, res, next){
         console.error(err.stack);
         res.status(500);
-        res.render(app.get('templates_dir'), {page : '500'});
+        res.render(app.get('templates_dir'), {
+            page : '500',
+            user : req.user });
     });
 };
 

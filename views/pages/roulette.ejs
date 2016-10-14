@@ -18,7 +18,7 @@
 		</div> <!-- основной div под рулетку -->
 
 		<!-- УПРАВЛЕНИЕ, СТАВКИ -->
-		<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 panel panel-default">
+		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 panel panel-default">
 			<div class="panel-body">
 				
 				<div>
@@ -119,7 +119,7 @@
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 						<!-- кнопка запуска анимации -->
 						<!-- !!! ДО СТАВОК НУЖЕН ЕЩЕ КЛАСС disabled. ПОСЛЕ ЛЮБОЙ СТАВКИ УДАЛЯТЬ ЕГО -->
-						<a onClick="getWinSegmentFromServerAndStart();" class="btn btn-info center-block">Let's GO</a>
+						<a onClick="spinWheel.getWinSegmentFromServerAndStart(36);" class="btn btn-info center-block">Let's GO</a>
 					</div>
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 						<!-- кнопка сброса анимации -->
@@ -130,13 +130,15 @@
 		</div> <!-- основной div под таблицу ставок -->
 
 		<!-- ИСТОРИЯ ВЫЙГРАШНЫХ ПОЛЕЙ -->
-		<!-- ПОСЛЕ КАЖДОЙ ИГРЫ ДОБАВЛЯТЬ <span class="badge">поле WIN</span> / -->
+		<!-- ПОСЛЕ КАЖДОЙ ИГРЫ ДОБАВЛЯТЬ <span class="badge" style="background-color: #ff0000">3</span> / -->
+		<!-- ИНФОРМАЦИЯ О ПОЛЕ ТУТ - spinWheel.segments[36 - numWinSegment] -->
+		<!-- ЦВЕТ ПОЛЯ - 'fillStyle' : '#ff0000' / ЦИФРА - 'text' : '3' -->
 		<div class="col-xs-8 col-sm-8 col-md-2 col-lg-2">
 			<div class="panel panel-default">
 			  <div class="panel-heading">Game History</div>
 			  <div class="panel-body">
-			    <span class="badge">3</span> /
-			    <span class="badge">28</span> /
+			    <span class="badge" style="background-color: #ff0000">3</span> /
+			    <span class="badge" style="background-color: #000000">28</span> /
 			    <span class="badge">16</span> /
 			    <span class="badge">5</span> /
 			    <span class="badge">34</span> /
@@ -145,19 +147,15 @@
 		</div> <!-- история -->
 		
 		<!-- ПОЛЬЗОВАТЕЛИ НА САЙТЕ -->
-		<div class="col-xs-4 col-sm-4 col-md-1 col-lg-1">
-			<!-- <ul class="list-group">
-			  <li class="list-group-item">Test-1</li>
-			  <li class="list-group-item">Vasya</li>
-			  <li class="list-group-item">Petya</li>
-			  <li class="list-group-item">Оччччееенньььдлинныйник</li>
-			  <li class="list-group-item">Test-2</li>
-			</ul> -->
+		<!-- ДЛЯ КАЖДОГО ПОЛЬЗОВАТЕЛЯ ДОБАВЛЯТЬ <li><a href="#" и т.д.></a></li> -->
+		<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
 			<div class="panel panel-default">
 			  <div class="panel-heading">Users On-Line</div>
 			  <div class="panel-body">
-			  	<a id="Vasya" href="#" class="listOfUsers" data-toggle="tooltip" data-placement="top" title="Тут будем показывать немного информации о Васе">Vasya</a>
-			  	<a id="Petya55555555555555555555555555" href="#" class="listOfUsers" data-toggle="tooltip" data-placement="top" title="Тут будем показывать немного информации о Пете">Petya111111111</a>
+			  	<ul class="row">
+			  		<li><a id="Vasya" href="#" class="listOfUsers" data-toggle="tooltip" data-placement="top" title="Тут будем показывать немного информации о Васе">Vasya</a></li>
+			  		<li><a id="Petya1111111112222222333333" href="#" class="listOfUsers" data-toggle="tooltip" data-placement="top" title="Тут будем показывать немного информации о Пете">Petya1111111112222222333333</a></li>
+			  	</ul>
 			  </div>
 			</div>
 		</div> <!-- пользователи -->
@@ -167,15 +165,12 @@
 		
 		<!-- ПЕРЕНЕСТИ В НЕОБХОДИМЫЕ ФАЙЛЫ -->
 		<style type="text/css">
-		   /*body{
-		    background-color: #047f42;
-		   }*/
 		   .btn{
 		   	border-radius: 15px;
 		   }
 		   .listOfUsers{
 		   	word-wrap: break-word;
-		   	font-size: 12px;
+		   	font-size: 13px;
 		   }
 		</style>
 		<!-- ПЕРЕНЕСТИ В НЕОБХОДИМЫЕ ФАЙЛЫ -->
