@@ -9,6 +9,10 @@ html {
 body {
   /* чтобы всё было выше footer'a */
   margin-bottom: 30px;
+  padding-top:80px; 
+}
+.btn{
+border-radius: 15px;
 }
 .footer {
   position: absolute;
@@ -35,4 +39,15 @@ body {
   left: 45.5%;
   width: 10%;
   z-index: 2;
+}
+
+/*ДЛЯ СПИСКА ПОЛЬЗОВАТЕЛЕЙ*/
+.list-Users-Field{
+word-wrap: break-word;
+font-size: 13px;
+}
+
+/*ДЛЯ ЧАТА*/
+#id_chat-Output-Field{
+  min-height: 300px;
 }

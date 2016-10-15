@@ -54,7 +54,7 @@ module.exports = function(app, passport, express) {
         });
     });
 
-    app.get('/chat', isLoggedIn, function(req, res){
+    app.get('/chat', function(req, res){
         res.render(app.get('templates_dir'), {
             page : 'chat',
             user : req.user });

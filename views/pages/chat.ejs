@@ -1,3 +1,48 @@
 <!-- views/pages/chat.ejs -->
 <title>Chat</title>
-<h1>chat</h1>
+<div class="container">
+	<div class="row">
+
+		<!-- ПОЛЕ ДЛЯ ВЫВОДА СООБЩЕНИЙ -->
+		<!-- формат сообщений для вывода: <p><strong><a href="#">=NICK: </a></strong>=message</p> -->
+		<div id="id_chat-Output-Field" class="col-xs-8 col-sm-8 col-md-10 col-lg-10 panel panel-default">
+			<p><strong><a href="#">Vasya: </a></strong>test123</p>
+			<p><strong><a href="#">Petya: </a></strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div> <!-- ПОЛЕ ДЛЯ ВЫВОДА СООБЩЕНИЙ -->
+
+		<!-- ПОЛЬЗОВАТЕЛИ НА САЙТЕ -->
+		<!-- ДЛЯ КАЖДОГО ПОЛЬЗОВАТЕЛЯ ДОБАВЛЯТЬ <li><a href="#" class="list-Users-Field" и т.д. в title="инфа о пользователе"></a></li> -->
+		<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+			<div class="panel panel-default">
+			  <div class="panel-heading">Users On-Line</div>
+			  <div class="panel-body">
+			  	<ul id="id_list-Users-Field" class="row">
+			  		<li><a id="Vasya" href="#" class="list-Users-Field" data-toggle="tooltip" data-placement="top" title="Тут будем показывать немного информации о Васе">Vasya</a></li>
+			  		<li><a id="Petya1111111112222222333333" href="#" class="list-Users-Field" data-toggle="tooltip" data-placement="top" title="Тут будем показывать немного информации о Пете">Petya1111111112222222333333</a></li>
+			  	</ul>
+			  </div>
+			</div>
+		</div> <!-- ПОЛЬЗОВАТЕЛИ НА САЙТЕ -->
+
+		<!-- ПОЛЕ ДЛЯ ВВОДА СООБЩЕНИЙ -->
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<form role="form">
+				<div class="form-group">
+				  <label class="control-label">Type your Message:</label>
+				  <div class="input-group">
+				    <input id="id_chat-Input-Field" type="text" class="form-control">
+				    <span class="input-group-btn">
+				      <button type="submit" class="btn btn-default">Send</button>
+				    </span>
+				  </div>
+				</div>
+			</form>
+		</div> <!-- ПОЛЕ ДЛЯ ВВОДА СООБЩЕНИЙ -->
+
+	</div> <!-- div-row -->
+</div> <!-- div-container -->
