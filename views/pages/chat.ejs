@@ -35,7 +35,7 @@
 				<div class="form-group">
 				  <label class="control-label">Type your Message:</label>
 				  <div class="input-group">
-				    <input id="id_chat-Input-Field" type="text" class="form-control">
+				    <input id="id_chat-Input-Field" type="text" placeholder="Type here..." class="form-control">
 				    <span class="input-group-btn">
 				      <button type="submit" class="btn btn-default">Send</button>
 				    </span>
@@ -46,3 +46,17 @@
 
 	</div> <!-- div-row -->
 </div> <!-- div-container -->
+
+
+<script type="text/javascript">
+
+var $window = $(window);
+var $id_chatInputField = $('#id_chat-Input-Field');
+
+$window.keydown(function (event) {
+	if (!(event.ctrlKey || event.metaKey || event.altKey)) {
+		$id_chatInputField.focus();
+	};
+});
+
+</script>
