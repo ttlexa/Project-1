@@ -47,14 +47,25 @@
 	</div> <!-- div-row -->
 </div> <!-- div-container -->
 
+<% if(user == undefined){ %>
+    <%= user %>
+<% } %>
+
+<% if(user != undefined){ %>
+    <%= user %>
+<% } %>
 
 <!-- ВЫНЕСТИ В ОТДЕЛЬНЫЙ ФАЙЛ: "public/js/chat.js" -->
 <script>
+// // TEST - socket.io
+// var socket = io();
+// socket.on('news', function (data) {
+// console.log(data);
+// socket.emit('my other event', { my: 'data' });
+// });
+
 var socket = io();
-socket.on('news', function (data) {
-console.log(data);
-socket.emit('my other event', { my: 'data' });
-});
+
 </script>
 
 
