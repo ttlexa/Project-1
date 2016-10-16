@@ -47,13 +47,16 @@
 	</div> <!-- div-row -->
 </div> <!-- div-container -->
 
+
+<!-- ВЫНЕСТИ В ОТДЕЛЬНЫЙ ФАЙЛ: "public/js/chat.js" -->
 <script>
-  var socket = io();
-  socket.on('news', function (data) {
-    console.log(data);
-    socket.emit('my other event', { my: 'data' });
-  });
+var socket = io();
+socket.on('news', function (data) {
+console.log(data);
+socket.emit('my other event', { my: 'data' });
+});
 </script>
+
 
 <!-- НА СТРАНИЦЕ ЧАТА, ПРИ НАЖАТИИ ЛЮБОЙ КЛАВИШИ:
 ФОКУС В ПОЛЕ ВВОДА СООБЩЕНИЯ -->

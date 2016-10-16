@@ -1,6 +1,6 @@
 // server.js
 
-// установка ===================================================================
+// установка ==========================================================
 // подключение необходимых модулей
 var express 	= require('express');
 var app 		= express();
@@ -15,7 +15,7 @@ var server 		= require('http').Server(app);
 var io 			= require('socket.io')(server);
 var config 		= require('./config');
 
-// конфигурация ===============================================================
+// конфигурация =======================================================
 mongoose.connect(config.get("db:connection") + config.get("db:name")); // подключение к БД по пути из config'a
 
 require('./config/passport')(passport); // передача passport'a дял конфигурации
@@ -35,17 +35,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash()); // использование connect-flash для сообщений в сессии
 
-// роутинг =====================================================================
+// подключение доп. модулей ===========================================
 require('./app/routes.js')(app, passport); // подключение роутинга и передача ему необходимых модулей
+require('./app/chat.js')(io);
 
-// запуск сервера ==============================================================
+// запуск сервера =====================================================
 server.listen(app.get('port'));
 console.log('Server START on ' + app.get("port") + ' port');
-
-// TEST - socket.io
-io.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
-  });
-});
