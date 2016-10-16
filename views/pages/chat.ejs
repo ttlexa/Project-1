@@ -47,9 +47,17 @@
 	</div> <!-- div-row -->
 </div> <!-- div-container -->
 
+<script>
+  var socket = io();
+  socket.on('news', function (data) {
+    console.log(data);
+    socket.emit('my other event', { my: 'data' });
+  });
+</script>
 
+<!-- НА СТРАНИЦЕ ЧАТА, ПРИ НАЖАТИИ ЛЮБОЙ КЛАВИШИ:
+ФОКУС В ПОЛЕ ВВОДА СООБЩЕНИЯ -->
 <script type="text/javascript">
-
 var $window = $(window);
 var $id_chatInputField = $('#id_chat-Input-Field');
 
@@ -58,5 +66,4 @@ $window.keydown(function (event) {
 		$id_chatInputField.focus();
 	};
 });
-
 </script>

@@ -1,8 +1,10 @@
 // app/routes.js
 
-module.exports = function(app, passport, express) {
+module.exports = function(app, passport) {
 
-    app.use(express.static(__dirname + '/public')); // подключение статики
+    // ПОЗЖЕ УДАЛИТЬ, т.к.:
+    // ЗАЧЕМ ТУТ, ЕСЛИ УЖЕ ПОДКЛЮЧИЛИ В server.js
+    // app.use(express.static(__dirname + '/public')); // подключение статики
 
     // HOME  ===============================
     // =====================================
