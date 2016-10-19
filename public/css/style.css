@@ -48,6 +48,7 @@ font-size: 13px;
 }
 
 /*ДЛЯ ЧАТА*/
-#id_chat-Output-Field{
+#id_chatOutputField{
   min-height: 300px;
+  word-wrap: break-word;
 }

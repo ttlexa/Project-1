@@ -5,7 +5,7 @@
 
 		<!-- ПОЛЕ ДЛЯ ВЫВОДА СООБЩЕНИЙ -->
 		<!-- формат сообщений для вывода: <p><strong><a href="#">=NICK: </a></strong>=message</p> -->
-		<div id="id_chat-Output-Field" class="col-xs-8 col-sm-8 col-md-10 col-lg-10 panel panel-default">
+		<div id="id_chatOutputField" class="col-xs-8 col-sm-8 col-md-10 col-lg-10 panel panel-default">
 			<p><strong><a href="#">Vasya: </a></strong>test123</p>
 			<p><strong><a href="#">Petya: </a></strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -31,11 +31,11 @@
 
 		<!-- ПОЛЕ ДЛЯ ВВОДА СООБЩЕНИЙ -->
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<form role="form">
+			<form role="form" id="id_chatForm">
 				<div class="form-group">
 				  <label class="control-label">Type your Message:</label>
 				  <div class="input-group">
-				    <input id="id_chat-Input-Field" type="text" placeholder="Type here..." class="form-control">
+				    <input id="id_chatInputField" type="text" placeholder="Type here..." class="form-control">
 				    <span class="input-group-btn">
 				      <button type="submit" class="btn btn-default">Send</button>
 				    </span>
@@ -56,15 +56,33 @@
 <% } %>
 
 <!-- ВЫНЕСТИ В ОТДЕЛЬНЫЙ ФАЙЛ: "public/js/chat.js" -->
-<script>
-// // TEST - socket.io
-// var socket = io();
-// socket.on('news', function (data) {
-// console.log(data);
-// socket.emit('my other event', { my: 'data' });
-// });
+<script type="text/javascript">
+var socket = io();	// подключение socket.io
 
-var socket = io();
+// сохр. в переменнные выборки jQuery
+var $id_chatForm = $('#id_chatForm');
+var $id_chatOutputField = $('#id_chatOutputField');
+var $id_chatInputField = $('#id_chatInputField');
+
+$id_chatForm.on('submit', function(){
+	var text = $id_chatInputField.val();	// сохранение текста из поля input
+	$id_chatInputField.val('');		// очистка ранее сохраненного текста
+
+	// формирование события 'message'
+	// запуск callback функции - означает, что сервер получил событие
+	// в таком случае выводим свое же сообщения у себя на странице
+	socket.emit('message', text, function(){
+		$id_chatOutputField.append('<p><strong><a href="#">=NICK: </a></strong>' + text + '</p>');
+	});
+
+	return false;	// отключение стандарт. submit
+});
+
+// при получении события 'message' от сервера - вывод сообщений в чат
+socket.on('message', function(text){
+	$id_chatOutputField.append('<p><strong><a href="#">=NICK: </a></strong>' + text + '</p>');
+});
+
 
 </script>
 
@@ -73,7 +91,7 @@ var socket = io();
 ФОКУС В ПОЛЕ ВВОДА СООБЩЕНИЯ -->
 <script type="text/javascript">
 var $window = $(window);
-var $id_chatInputField = $('#id_chat-Input-Field');
+var $id_chatInputField = $('#id_chatInputField');
 
 $window.keydown(function (event) {
 	if (!(event.ctrlKey || event.metaKey || event.altKey)) {
