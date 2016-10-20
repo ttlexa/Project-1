@@ -19,6 +19,9 @@
     "name": "ttlexa",
     "email": "aleksey.grechka.it@gmail.com"
   },
+  "scripts": {
+	"start": "node server.js"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
