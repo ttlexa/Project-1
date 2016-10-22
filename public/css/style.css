@@ -42,13 +42,13 @@ border-radius: 15px;
 }
 
 /*ДЛЯ СПИСКА ПОЛЬЗОВАТЕЛЕЙ*/
-.list-Users-Field{
+.listUsers{
 word-wrap: break-word;
 font-size: 13px;
 }
 
 /*ДЛЯ ЧАТА*/
-#id_chatOutputField{
+#chatOutput{
   min-height: 300px;
   word-wrap: break-word;
 }

@@ -1,7 +1,5 @@
 // app/chat.js
 
-"use strict"
-
 module.exports = function (io) {
 io.on('connection', function (socket) {
 	

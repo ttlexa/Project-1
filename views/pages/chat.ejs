@@ -5,7 +5,7 @@
 
 		<!-- ПОЛЕ ДЛЯ ВЫВОДА СООБЩЕНИЙ -->
 		<!-- формат сообщений для вывода: <p><strong><a href="#">=NICK: </a></strong>=message</p> -->
-		<div id="id_chatOutputField" class="col-xs-8 col-sm-8 col-md-10 col-lg-10 panel panel-default">
+		<div id="chatOutput" class="col-xs-8 col-sm-8 col-md-10 col-lg-10 panel panel-default">
 			<p><strong><a href="#">Vasya: </a></strong>test123</p>
 			<p><strong><a href="#">Petya: </a></strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -21,9 +21,9 @@
 			<div class="panel panel-default">
 			  <div class="panel-heading">Users On-Line</div>
 			  <div class="panel-body">
-			  	<ul id="id_list-Users-Field" class="row">
-			  		<li><a id="Vasya" href="#" class="list-Users-Field" data-toggle="tooltip" data-placement="top" title="Тут будем показывать немного информации о Васе">Vasya</a></li>
-			  		<li><a id="Petya1111111112222222333333" href="#" class="list-Users-Field" data-toggle="tooltip" data-placement="top" title="Тут будем показывать немного информации о Пете">Petya1111111112222222333333</a></li>
+			  	<ul id="listUsers" class="row">
+			  		<li><a id="Vasya" href="#" class="listUsers" data-toggle="tooltip" data-placement="top" title="Тут будем показывать немного информации о Васе">Vasya</a></li>
+			  		<li><a id="Petya1111111112222222333333" href="#" class="listUsers" data-toggle="tooltip" data-placement="top" title="Тут будем показывать немного информации о Пете">Petya1111111112222222333333</a></li>
 			  	</ul>
 			  </div>
 			</div>
@@ -31,11 +31,11 @@
 
 		<!-- ПОЛЕ ДЛЯ ВВОДА СООБЩЕНИЙ -->
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<form role="form" id="id_chatForm">
+			<form role="form" id="chatForm">
 				<div class="form-group">
 				  <label class="control-label">Type your Message:</label>
 				  <div class="input-group">
-				    <input id="id_chatInputField" type="text" placeholder="Type here..." class="form-control">
+				    <input id="chatInput" type="text" placeholder="Type here..." class="form-control">
 				    <span class="input-group-btn">
 				      <button type="submit" class="btn btn-default">Send</button>
 				    </span>
@@ -60,27 +60,26 @@
 var socket = io();	// подключение socket.io
 
 // сохр. в переменнные выборки jQuery
-var $id_chatForm = $('#id_chatForm');
-var $id_chatOutputField = $('#id_chatOutputField');
-var $id_chatInputField = $('#id_chatInputField');
+var $chatForm = $('#chatForm');
+var $chatOutput = $('#chatOutput');
+var $chatInput = $('#chatInput');
 
-$id_chatForm.on('submit', function(){
-	var text = $id_chatInputField.val();	// сохранение текста из поля input
-	$id_chatInputField.val('');		// очистка ранее сохраненного текста
+$chatForm.on('submit', function(){
+	var text = $chatInput.val();	// сохранение текста из поля input
+	$chatInput.val('');				// очистка ранее сохраненного текста
 
 	// формирование события 'message'
 	// запуск callback функции - означает, что сервер получил событие
 	// в таком случае выводим свое же сообщения у себя на странице
 	socket.emit('message', text, function(){
-		$id_chatOutputField.append('<p><strong><a href="#">=NICK: </a></strong>' + text + '</p>');
+		$chatOutput.append('<p><strong><a href="#">=NICK: </a></strong>' + text + '</p>');
 	});
-
 	return false;	// отключение стандарт. submit
 });
 
 // при получении события 'message' от сервера - вывод сообщений в чат
 socket.on('message', function(text){
-	$id_chatOutputField.append('<p><strong><a href="#">=NICK: </a></strong>' + text + '</p>');
+	$chatOutput.append('<p><strong><a href="#">=NICK: </a></strong>' + text + '</p>');
 });
 
 
@@ -91,11 +90,11 @@ socket.on('message', function(text){
 ФОКУС В ПОЛЕ ВВОДА СООБЩЕНИЯ -->
 <script type="text/javascript">
 var $window = $(window);
-var $id_chatInputField = $('#id_chatInputField');
+var $chatInput = $('#chatInput');
 
 $window.keydown(function (event) {
 	if (!(event.ctrlKey || event.metaKey || event.altKey)) {
-		$id_chatInputField.focus();
+		$chatInput.focus();
 	};
 });
 </script>

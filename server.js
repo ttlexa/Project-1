@@ -16,7 +16,7 @@ var io 			= require('socket.io')(server);
 var config 		= require('./config');
 
 // конфигурация =======================================================
-mongoose.connect(config.get("db:connection") + config.get("db:name")); // подключение к БД по пути из config'a
+mongoose.connect(config.get('db:connection') + config.get('db:name')); // подключение к БД по пути из config'a
 
 require('./config/passport')(passport); // передача passport'a дял конфигурации
 
@@ -28,9 +28,12 @@ app.use(express.static(__dirname + '/public'));				// подключение с�
 app.set('port', process.env.PORT || config.get("port"));	// установка порта для сервера из config'a
 app.set('view engine', 'ejs'); 						// установка ejs'a для шаблонизации
 app.set('templates_dir', 'templates/template.ejs'); // путь к шаблонам
+io.set('origins', config.get('io:domain') + config.get('io:port'));	// доступ к моему socket.io только с домена 'localhost:*'
 
 // необходимо для passport'a
-app.use(session({ secret: 'roulettejslexa' })); // секрет-ключ сессии
+app.use(session({
+	secret: config.get('session:secret'),		// секрет-ключ сессии
+	cookie: config.get('session:cookie') }));	// настройки cookie 
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash()); // использование connect-flash для сообщений в сессии
