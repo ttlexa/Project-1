@@ -2,10 +2,6 @@
 
 module.exports = function(app, passport) {
 
-    // ПОЗЖЕ УДАЛИТЬ, т.к.:
-    // ЗАЧЕМ ТУТ, ЕСЛИ УЖЕ ПОДКЛЮЧИЛИ В server.js
-    // app.use(express.static(__dirname + '/public')); // подключение статики
-
     // HOME  ===============================
     // =====================================
     app.get('/', function(req, res) {

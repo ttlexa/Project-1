@@ -39,8 +39,8 @@ app.use(passport.session());
 app.use(flash()); // использование connect-flash для сообщений в сессии
 
 // подключение доп. модулей ===========================================
-require('./app/routes.js')(app, passport); // подключение роутинга и передача ему необходимых модулей
-require('./app/chat.js')(io);
+require('./app/routes.js')(app, passport);		// подключение роутинга и передача ему необходимых модулей
+require('./app/chat.js')(app, passport, io);	// подключение модуля чата
 
 // запуск сервера =====================================================
 server.listen(app.get('port'));
