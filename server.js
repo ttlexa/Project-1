@@ -21,9 +21,9 @@ mongoose.connect(config.get('db:connection') + config.get('db:name')); // под
 require('./config/passport')(passport); // передача passport'a дял конфигурации
 
 // настройка express'a и др. модулей
-app.use(morgan('dev'));		// логирование запросов в консоль
-app.use(cookieParser());	// чтение cookies (необходимо для auth)
-app.use(bodyParser());		// получение информации из html'a
+app.use(morgan('dev'));			// логирование запросов в консоль
+app.use(cookieParser());		// чтение cookies (необходимо для auth)
+app.use(bodyParser.json());		// получение информации из html'a
 app.use(express.static(__dirname + '/public'));				// подключение статичных файлов
 app.set('port', process.env.PORT || config.get("port"));	// установка порта для сервера из config'a
 app.set('view engine', 'ejs'); 						// установка ejs'a для шаблонизации
@@ -32,8 +32,10 @@ io.set('origins', config.get('io:domain') + config.get('io:port'));	// дост�
 
 // необходимо для passport'a
 app.use(session({
-	secret: config.get('session:secret'),		// секрет-ключ сессии
-	cookie: config.get('session:cookie') }));	// настройки cookie 
+	secret 	: config.get('session:secret'),		// секрет сессии
+	cookie 	: config.get('session:cookie'),		// настройки cookie
+	resave 	: false,
+	saveUninitialized 	: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash()); // использование connect-flash для сообщений в сессии
