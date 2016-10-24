@@ -99,5 +99,5 @@ function isLoggedIn(req, res, next) {
 function isLoggedInAccess (req, res, next) {
     if (req.isAuthenticated()) {
         res.redirect('/profile');
-    } return next();
+    }else return next();
 };
