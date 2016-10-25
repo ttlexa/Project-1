@@ -1,17 +1,18 @@
 {
   "name": "Roulette-JS-game",
   "description": "My JS + Node project: Roulette - online game",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "keywords": [
     "roulette",
     "game",
     "online",
+    "casino",
+    "chat",
     "javascript",
     "jquery",
     "node",
     "express",
-    "socket",
-    "io",
+    "socket.io",
     "passport"
   ],
   "main": "server.js",
@@ -44,8 +45,7 @@
     "socket.io": "^1.5.0"
   },
   "devDependencies": {
-    "connect-mongo": "^1.3.2",
-    "connect-redis": "^3.1.0"
+    "connect-mongo": "^1.3.2"
   },
   "engines": {
     "node": ">= 4.5.0"

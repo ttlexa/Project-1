@@ -47,13 +47,6 @@
 	</div> <!-- div-row -->
 </div> <!-- div-container -->
 
-<% if(user == undefined){ %>
-    <%= user %>
-<% } %>
-
-<% if(user != undefined){ %>
-    <%= user %>
-<% } %>
 
 <!-- ВЫНЕСТИ В ОТДЕЛЬНЫЙ ФАЙЛ: "public/js/chat.js" -->
 <script type="text/javascript">
@@ -68,18 +61,27 @@ $chatForm.on('submit', function(){
 	var text = $chatInput.val();	// сохранение текста из поля input
 	$chatInput.val('');				// очистка ранее сохраненного текста
 
-	// формирование события 'message'
-	// запуск callback функции - означает, что сервер получил событие
-	// в таком случае выводим свое же сообщения у себя на странице
-	socket.emit('message', text, function(){
-		$chatOutput.append('<p><strong><a href="#">=NICK: </a></strong>' + text + '</p>');
-	});
+	// // формирование события 'message'
+	// // ВАРИАНТ-1: невозможно выводить свой ник, т.к. ник приходит от сервера
+	// // вывод своего сообщения через callback функцию
+	// // означает, что сервер получил событие
+	// socket.emit('message', text, function(){
+	// 	$chatOutput.append('<p><strong><a href="#">123: </a></strong>' + text + '</p>');
+	// });
+	// return false;	// отключение стандарт. submit
+
+	// // формирование события 'message'
+	// // ВАРИАНТ-2: отправка своего сообщения всем, включая себя же
+	socket.emit('message', text);
 	return false;	// отключение стандарт. submit
 });
 
 // при получении события 'message' от сервера - вывод сообщений в чат
-socket.on('message', function(text){
-	$chatOutput.append('<p><strong><a href="#">=NICK: </a></strong>' + text + '</p>');
+socket.on('message', function(nick, text){
+	$chatOutput.append('<p><strong><a href="#">' + nick + ': </a></strong>' + text + '</p>');
+	// // плавная прокрутка вниз страницы - можно добавить отдельную кнопку / флаг
+	// // для включения / отключения данной функции
+	// $('body').animate({scrollTop:$(document).height()}, 2000);
 });
 
 
