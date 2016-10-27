@@ -63,14 +63,10 @@ io.use(passportSocketIo.authorize({
 io.set('origins', config.get('io:domain') + config.get('io:port'));	// доступ к моему socket.io только с домена и порта из config'a
 
 // подключение доп. модулей ===========================================
-require('./app/routes.js')(app, passport, io);  // подключение роутинга и передача ему необходимых модулей
-// ПОЗЖЕ УДАЛИТЬ, т.к.:
-// подключение данных модулей перенесено в "routes.js"
-
-// ========= ПРОБЛЕМА: ============
-// СОБЫТИЕ "CONNECTION" - ПРОИСХОДИТ ОДНОВРЕМЕННО ИЗ ДВУХ МОДУЛЕЙ
-require('./app/chat.js')(io);               // подключение модуля чата
-require('./app/game_socket.js')(io);        // подключение модуля игры
+require('./app/routes.js')(app, passport);  // подключение роутинга и передача ему необходимых модулей
+require('./app/routesSocket.js')(io);       // подключение модуля роутинга сокетов
+// require('./app/chat.js')(io);               // подключение модуля чата
+// require('./app/game_socket.js')(io);        // подключение модуля игры
 
 // запуск сервера =====================================================
 http.listen(app.get('port'));

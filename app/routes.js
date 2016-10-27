@@ -1,6 +1,6 @@
 // app/routes.js
 
-module.exports = function(app, passport, io) {
+module.exports = function(app, passport) {
 
     // HOME  ===============================
     // =====================================
@@ -57,7 +57,6 @@ module.exports = function(app, passport, io) {
     // =====================================
     // только для авторизированных пользователей
     app.get('/chat', isLoggedIn, function(req, res){
-        // require('./chat.js')(io); // подключение модуля чата
         res.render(app.get('templates_dir'), {
             page : 'chat',
             user : req.user });
@@ -67,7 +66,6 @@ module.exports = function(app, passport, io) {
     // =====================================
     // только для авторизированных пользователей
     app.get('/roulette', isLoggedIn, function(req, res){
-        // require('./game_socket.js')(io); // подключение модуля рулетки
         res.render(app.get('templates_dir'), {
             page : 'roulette',
             user : req.user });
