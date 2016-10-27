@@ -5,29 +5,14 @@ var bcrypt   = require('bcrypt-nodejs');
 // создаем схему для модели пользователя ===============================
 var userSchema = mongoose.Schema({
 
-    local            : {
-        email        : String,
-        password     : String,
+    local           : {
+        email       : String,
+        password    : String
+    },
+    roulette        : {
+        money       : Number,
+        statistics  : String
     }
-    // ,
-    // facebook         : {
-    //     id           : String,
-    //     token        : String,
-    //     email        : String,
-    //     name         : String
-    // },
-    // twitter          : {
-    //     id           : String,
-    //     token        : String,
-    //     displayName  : String,
-    //     username     : String
-    // },
-    // google           : {
-    //     id           : String,
-    //     token        : String,
-    //     email        : String,
-    //     name         : String
-    // }
 
 });
 

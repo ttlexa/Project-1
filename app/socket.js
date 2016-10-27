@@ -1,5 +1,7 @@
 // app/socket.js
 
+// функции для работы с "passport.socketio"
+// определение что делать с Auth & NO_Auth пользователями
 exports.AuthSuccess = function (data, accept){
   console.log('successful connection to socket.io');
   accept(); 	// запуск функции дает доступ к socket.io ('connection')

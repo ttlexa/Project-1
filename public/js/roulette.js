@@ -2,6 +2,9 @@
 // <!-- скрипт для настройки, создания и запуска колеса рулетки -->
 "use strict"
 
+var socket = io();	// подключение socket.io
+
+// alert(spinWheel.segments[36].text); - получение значения из поля text, указанного сегмента
 var spinWheel = new Winwheel({
 	'numSegments'       :   37,         // кол-во сегментов
 	'textAlignment'     :   'outer',    // где будет написан текст (ближе/дальше от центра)
@@ -72,3 +75,13 @@ Winwheel.prototype.getWinSegmentFromServerAndStart = function (numWinSegment){
     // запуск колеса рулетки
     spinWheel.startAnimation();
 };
+
+$(document).ready(function(){
+
+	;(function(){
+
+		console.log('- - - WORK roulette.js')
+
+	}) (); // END of ;(function(){
+
+} ); // END of $(document).ready(function(){

@@ -51,6 +51,7 @@ module.exports = function(passport) {
                     // запись данных о пользователе
                     newUser.local.email    = email;
                     newUser.local.password = newUser.generateHash(password);
+                    newUser.roulette.money = 1000;
 
                     // сохранение пользователя в БД
                     newUser.save(function(err) {

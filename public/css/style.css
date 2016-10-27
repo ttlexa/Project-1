@@ -52,3 +52,9 @@ font-size: 13px;
   min-height: 300px;
   word-wrap: break-word;
 }
+
+/*Убрать отступы сверху и снизу*/
+.no-margin{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}

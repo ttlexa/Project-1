@@ -1,11 +1,12 @@
 // app/chat.js
 
-module.exports = function (app, io) {
+module.exports = function (io) {
 
 	io.on('connection', function (socket) {
 	// console.log(socket.handshake);
 	// console.log(socket.request);
-	console.log(socket.request.user);
+	// console.log(socket.request.user);
+	console.log('\n - - - connect "CHAT.JS"');
 
 	var nick = socket.request.user.local.email;
 
