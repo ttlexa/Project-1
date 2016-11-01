@@ -9,7 +9,7 @@ var Game = function(gameNum, roundTime){
 	this.gameNum = gameNum;
 	this.roundTime = roundTime;
 	this.gameStatus = 0;
-	this.players = [];
+	this.players = {};
 	this.cells = {};
 };
 
@@ -21,15 +21,16 @@ exports.initGame = function(roundTime){
 };
 
 // Object.keys(this.players).length
-Game.prototype.playerJoin = function(nick, money){
+Game.prototype.playerJoin = function(user, nick, money){
 	console.log('\n - - - player: ' + nick + ' (' + money + ' money) Join to > ' 
 		+ this.gameNum + ' (' + this.roundTime + ' sec) < at  ' + new Date() + '\n');
 	var playerNum = this.players.length;
-	this.players[playerNum] = {'nick' : nick, 'money' : money};
+	this.players[user.id] = {'nick' : nick, 'money' : money};
 	console.log(this.players);
+	// console.log(user.id);
 };
 
-Game.prototype.playerLeave = function(nick, money){
+Game.prototype.playerLeave = function(user, nick, money){
 	console.log('\n - - - player: ' + nick + ' (' + money + ' money) Leave from > ' 
 		+ this.gameNum + ' (' + this.roundTime + ' sec) < at  ' + new Date() + '\n');
 	// // КАК НАЙТИ И УДАЛИТЬ ИЗ МАССИВА НЕОБХОДИМОГО ЮЗЕРА ?????
@@ -37,7 +38,14 @@ Game.prototype.playerLeave = function(nick, money){
 	// for (var key in this.players){
 	// 	console.log(this.players[key].nick)
 	// }
-	console.log(this.players[0].nick);
+
+	// console.log(this.players[0].nick);
+	
+	// // перебор, поиск и удаление в индексированном массиве
+	// this.players.forEach(function(item,i){
+	// 	if(item.nick==nick)
+	// 		return this.players.splice(i,1);
+	// });
 };
 
 
