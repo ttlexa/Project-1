@@ -1,29 +1,28 @@
 // app/chat.js
 
-module.exports = function (io, socket) {
+module.exports = function (io) {
 
-	// console.log(socket.handshake);
-	// console.log(socket.request);
-	// console.log(socket.request.user);
-	console.log('\n - - - connect "CHAT.JS" at ' + socket.id);
+	var chat = io.of('/chat');
 
-	var nick = socket.request.user.local.email;
+	chat.on('connection', function(socket){
+		
+		var nick = socket.request.user.local.email;	
 
-	// // ВАРИАНТ-1: невозможно выводить свой ник, т.к. ник приходит от сервера
-	// // вывод своего сообщения через callback функцию
-	// // означает, что сервер получил событие
-	// socket.on('message', function(text, cb){
-	// 	socket.broadcast.emit('message', nick, text);
-	// 	cb();	// запуск callback-функции означает, что сервер получил сообщение
-	// });
+		// console.log(socket.handshake);
+		// console.log(socket.request);
+		// console.log(socket.request.user);
+		console.log('\n - - - connect "CHAT.JS" at socket.id: ' + socket.id);
 
-	// // ВАРИАНТ-2: отправка своего сообщения всем, включая себя же
-	socket.on('message', function(text){
-		io.emit('message', nick, text);
+		// // Вывод своего же сообщения через callback функцию на клиенте
+		// // означает, что сервер получил событие
+		socket.on('message', function(text, cb){
+			socket.broadcast.emit('message', nick, text);
+			cb(nick);	// запуск callback-функции означает, что сервер получил сообщение
+		});
+
+		socket.on('disconnect', function(socket){
+			console.log('\n - - - "CHAT.JS" DISconnect');
+		});
+
 	});
-
-	socket.on('disconnect', function(socket){
-		console.log('\n - - - "CHAT.JS" DISconnect');
-	});
-
 };

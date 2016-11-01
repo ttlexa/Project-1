@@ -10,22 +10,21 @@
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <!-- <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css"> -->
     <!-- SCRIPT -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/js/script.js"></script>
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 </head>
 <body>
 
-<% if(user == undefined){ %>
-    <% include ../parts/menu_no_auth %>
-<% } %>
+    <% if(user == undefined){ %>
+        <% include ../parts/menu_no_auth %>
+    <% } %>
 
-<% if(user != undefined){ %>
-    <% include ../parts/menu_auth %>
-<% } %>
+    <% if(user != undefined){ %>
+        <% include ../parts/menu_auth %>
+    <% } %>
+
 
     <% if(page == "index"){ %>
     	<% include ../pages/index %>
@@ -58,6 +57,7 @@
     <% if(page == "500"){ %>
     	<% include ../pages/500 %>
     <% } %>
+
 
 	<% include ../parts/footer %>
 

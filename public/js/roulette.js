@@ -2,9 +2,10 @@
 // <!-- скрипт для настройки, создания и запуска колеса рулетки -->
 "use strict"
 
-var socket = io();	// подключение socket.io
-
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // alert(spinWheel.segments[36].text); - получение значения из поля text, указанного сегмента
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 var spinWheel = new Winwheel({
 	'numSegments'       :   37,         // кол-во сегментов
 	'textAlignment'     :   'outer',    // где будет написан текст (ближе/дальше от центра)
@@ -79,8 +80,35 @@ Winwheel.prototype.getWinSegmentFromServerAndStart = function (numWinSegment){
 $(document).ready(function(){
 
 	;(function(){
+		
+		var socket = io('/roulette');	// подключение socket.io (Namespaces = '/roulette')
 
-		console.log('- - - WORK roulette.js')
+		// сохр. в переменнные выборки jQuery
+		var $join = $('#join');
+		var $reset = $('#reset');
+		var $listUsers = $('#listUsers');
+
+		// // Front-End запуск колеса с указанием WIN-segment'a
+		// $join.on('click', function(){
+		// 	spinWheel.getWinSegmentFromServerAndStart(36);
+		// });
+
+		// $join.on('click', function(){
+		// 	socket.emit('playerJoin');
+		// 	$join.addClass('disabled');
+		// });
+
+		socket.on('playerJoin', function(nick, money){
+			$listUsers.append('<li><a id="' + nick + 
+				'" href="#" class="listUsers" title="Money: ' + money + '">' + nick + 
+				'</a></li>');
+		})
+
+		$reset.on('click', function(){
+			spinWheel.stopAnimation();
+			spinWheel.rotationAngle=0;
+			spinWheel.draw();			
+		});
 
 	}) (); // END of ;(function(){
 

@@ -6,8 +6,8 @@
 		<!-- ПОЛЕ ДЛЯ ВЫВОДА СООБЩЕНИЙ -->
 		<!-- формат сообщений для вывода: <p><strong><a href="#">=NICK: </a></strong>=message</p> -->
 		<div id="chatOutput" class="col-xs-8 col-sm-8 col-md-10 col-lg-10 panel panel-default">
-			<p><strong><a href="#">Vasya: </a></strong>test123</p>
-			<p><strong><a href="#">Petya: </a></strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			<p><strong><a href="#">Test1: </a></strong>test test test tset test</p>
+			<p><strong><a href="#">Test2: </a></strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -22,8 +22,8 @@
 			  <div class="panel-heading">Users On-Line</div>
 			  <div class="panel-body">
 			  	<ul id="listUsers" class="row">
-			  		<li><a id="Vasya" href="#" class="listUsers" data-toggle="tooltip" data-placement="top" title="Тут будем показывать немного информации о Васе">Vasya</a></li>
-			  		<li><a id="Petya1111111112222222333333" href="#" class="listUsers" data-toggle="tooltip" data-placement="top" title="Тут будем показывать немного информации о Пете">Petya1111111112222222333333</a></li>
+			  		<li><a id="Test1" href="#" class="listUsers" data-toggle="tooltip" data-placement="top" title="Тут можно показывать информацию о пользователе">Test1</a></li>
+			  		<li><a id="Test2" href="#" class="listUsers" data-toggle="tooltip" data-placement="top" title="Тут можно показывать информацию о пользователе">Test2</a></li>
 			  	</ul>
 			  </div>
 			</div>
@@ -47,56 +47,5 @@
 	</div> <!-- div-row -->
 </div> <!-- div-container -->
 
-
-<!-- ВЫНЕСТИ В ОТДЕЛЬНЫЙ ФАЙЛ: "public/js/chat.js" -->
-<script type="text/javascript">
-var socket = io();	// подключение socket.io
-
-// сохр. в переменнные выборки jQuery
-var $chatForm = $('#chatForm');
-var $chatOutput = $('#chatOutput');
-var $chatInput = $('#chatInput');
-
-$chatForm.on('submit', function(){
-	var text = $chatInput.val();	// сохранение текста из поля input
-	$chatInput.val('');				// очистка ранее сохраненного текста
-
-	// // формирование события 'message'
-	// // ВАРИАНТ-1: невозможно выводить свой ник, т.к. ник приходит от сервера
-	// // вывод своего сообщения через callback функцию
-	// // означает, что сервер получил событие
-	// socket.emit('message', text, function(){
-	// 	$chatOutput.append('<p><strong><a href="#">123: </a></strong>' + text + '</p>');
-	// });
-	// return false;	// отключение стандарт. submit
-
-	// // формирование события 'message'
-	// // ВАРИАНТ-2: отправка своего сообщения всем, включая себя же
-	socket.emit('message', text);
-	return false;	// отключение стандарт. submit
-});
-
-// при получении события 'message' от сервера - вывод сообщений в чат
-socket.on('message', function(nick, text){
-	$chatOutput.append('<p><strong><a href="#">' + nick + ': </a></strong>' + text + '</p>');
-	// // плавная прокрутка вниз страницы - можно добавить отдельную кнопку / флаг
-	// // для включения / отключения данной функции
-	// $('body').animate({scrollTop:$(document).height()}, 2000);
-});
-
-
-</script>
-
-
-<!-- НА СТРАНИЦЕ ЧАТА, ПРИ НАЖАТИИ ЛЮБОЙ КЛАВИШИ:
-ФОКУС В ПОЛЕ ВВОДА СООБЩЕНИЯ -->
-<script type="text/javascript">
-var $window = $(window);
-var $chatInput = $('#chatInput');
-
-$window.keydown(function (event) {
-	if (!(event.ctrlKey || event.metaKey || event.altKey)) {
-		$chatInput.focus();
-	};
-});
-</script>
+<!-- Подключаем скрипт для работы чата -->
+<script type="text/javascript" src='js/chat.js'></script>

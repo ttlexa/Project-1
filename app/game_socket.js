@@ -1,13 +1,26 @@
 // app/game_socket.js
 
 var game = require('./game.js');
-game.initGame();
+game.initGame(30);
 
-module.exports = function(io, socket) {
-	console.log('\n - - - connect "GAME_SOCKET.JS" at ' + socket.id);
-	// console.log(socket.request.headers);
+module.exports = function(io) {
 
-	socket.on('disconnect', function(socket){
-		console.log('\n - - - "GAME_SOCKET.JS" DISconnect');
+	var roulette = io.of('/roulette');
+	
+	roulette.on('connection', function(socket){
+		
+		var nick = socket.request.user.local.email;
+		var money = socket.request.user.roulette.money;
+		
+		console.log('\n - - - connect "GAME_SOCKET.JS" at socket.id: ' + socket.id);
+
+		game.games[0].playerJoin(nick, money);
+		roulette.emit('playerJoin', nick, money)
+
+		socket.on('disconnect', function(socket){
+			console.log('\n - - - "GAME_SOCKET.JS" DISconnect');
+			game.games[0].playerLeave(nick, money);
+		});
+
 	});
 };
