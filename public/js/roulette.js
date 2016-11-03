@@ -84,9 +84,10 @@ $(document).ready(function(){
 		var socket = io('/roulette');	// подключение socket.io (Namespaces = '/roulette')
 
 		// сохр. в переменнные выборки jQuery
-		var $join = $('#join');
+		// var $join = $('#join');
 		var $reset = $('#reset');
 		var $listUsers = $('#listUsers');
+		var $timeForBet = $('#timeForBet');
 
 		// // Front-End запуск колеса с указанием WIN-segment'a
 		// $join.on('click', function(){
@@ -101,8 +102,16 @@ $(document).ready(function(){
 		socket.on('playerJoin', function(nick, money){
 			$listUsers.append('<li><a id="' + nick + 
 				'" href="#" class="listUsers" title="Money: ' + money + '">' + nick + 
-				'</a></li>');
-		})
+				' ($: ' + money + ')</a></li>');
+		});
+
+		socket.on('startTimeForBet', function(timeForBet){
+			$timeForBet.text(timeForBet);
+			// alert(timeForBet);
+		});
+
+
+
 
 		$reset.on('click', function(){
 			spinWheel.stopAnimation();

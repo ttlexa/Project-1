@@ -1,7 +1,7 @@
 // app/game_socket.js
 
 var game = require('./game.js');
-game.initGame(30);
+game.initGame(10);
 
 module.exports = function(io) {
 
@@ -24,4 +24,9 @@ module.exports = function(io) {
 		});
 
 	});
+
+	exports.startTimeForBet = function(timeForBet){
+		roulette.emit('startTimeForBet', timeForBet)
+	};
+
 };
